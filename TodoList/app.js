@@ -3,8 +3,6 @@ const addButton = document.querySelector('#addButton');
 const deleteButton = document.querySelector('#deleteButton');
 const output = document.querySelector('#output');
 
-deleteButton.style.display = 'none';
-
 createTodo = (value) => {
   const li = document.createElement('li');
   const input = document.createElement('input');
@@ -37,9 +35,6 @@ addTodo = () => {
   if (input.value !== undefined && input.value !== '') {
     const todo = createTodo(input.value);
     output.appendChild(todo);
-    deleteButton.style.display = 'inline-block';
-  } else {
-    console.log('Invalid input');
   }
 };
 
