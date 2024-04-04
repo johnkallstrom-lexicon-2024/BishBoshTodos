@@ -1,33 +1,46 @@
 const input = document.querySelector('#input');
-const button = document.querySelector('#button');
+const addButton = document.querySelector('#addButton');
+const deleteButton = document.querySelector('#deleteButton');
 const output = document.querySelector('#output');
 
-mark = (e) => {
-  e.target.classList.toggle('text-decoration-line-through');
-  e.target.classList.toggle('list-group-item-success');
-};
+deleteButton.style.display = 'none';
 
 createTodo = (value) => {
-  const anchor = document.createElement('a');
-  anchor.setAttribute('href', '#');
-  anchor.classList.add('list-group-item');
-  anchor.classList.add('list-group-item-action');
+  const li = document.createElement('li');
+  const input = document.createElement('input');
+  const label = document.createElement('label');
 
-  const span = document.createElement('span');
-  span.innerText = value;
+  li.classList.add('list-group-item');
+  label.innerText = value;
+  label.classList.add('form-check-label');
 
-  anchor.addEventListener('click', mark);
-  anchor.appendChild(span);
-  return anchor;
+  input.setAttribute('type', 'checkbox');
+  input.classList.add('form-check-input');
+  input.classList.add('me-2');
+  input.addEventListener('change', function () {
+    if (this.checked) {
+      label.classList.add('text-decoration-line-through');
+      li.classList.add('list-group-item-success');
+    } else {
+      label.classList.remove('text-decoration-line-through');
+      li.classList.remove('list-group-item-success');
+    }
+  });
+
+  li.appendChild(input);
+  li.appendChild(label);
+
+  return li;
 };
 
 addTodo = () => {
   if (input.value !== undefined && input.value !== '') {
     const todo = createTodo(input.value);
     output.appendChild(todo);
+    deleteButton.style.display = 'inline-block';
   } else {
     console.log('Invalid input');
   }
 };
 
-button.addEventListener('click', addTodo);
+addButton.addEventListener('click', addTodo);
