@@ -3,7 +3,8 @@ const button = document.querySelector('#button');
 const output = document.querySelector('#output');
 
 mark = (e) => {
-  console.log(e.target.classList.toggle('text-decoration-line-through'));
+  e.target.classList.toggle('text-decoration-line-through');
+  e.target.classList.toggle('list-group-item-success');
 };
 
 createTodo = (value) => {
@@ -11,8 +12,12 @@ createTodo = (value) => {
   anchor.setAttribute('href', '#');
   anchor.classList.add('list-group-item');
   anchor.classList.add('list-group-item-action');
-  anchor.innerText = value;
+
+  const span = document.createElement('span');
+  span.innerText = value;
+
   anchor.addEventListener('click', mark);
+  anchor.appendChild(span);
   return anchor;
 };
 
