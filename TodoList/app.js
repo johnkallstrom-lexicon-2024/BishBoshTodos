@@ -43,4 +43,14 @@ addTodo = () => {
   }
 };
 
+deleteMarkedTodos = () => {
+  const todosToDelete = document.querySelectorAll(
+    '#output .list-group-item-success'
+  );
+  if (todosToDelete.length > 0) {
+    todosToDelete.forEach((t) => t.remove());
+  }
+};
+
 addButton.addEventListener('click', addTodo);
+deleteButton.addEventListener('click', deleteMarkedTodos);
