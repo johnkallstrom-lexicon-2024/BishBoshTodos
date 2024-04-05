@@ -12,14 +12,48 @@
 // }
 
 const form = document.querySelector('#form');
-form.addEventListener('submit', (e) => {
+const resetBtn = document.querySelector('#reset');
+resetBtn.style.display = 'none';
+
+function calculate(bish, bosh, max) {
+  const output = document.querySelector('#output');
+  const p = document.createElement('p');
+  output.appendChild(p);
+
+  for (number = 1; number <= max; number++) {
+    if (number % bish === 0 && number % bosh === 0) {
+      p.innerHTML += 'Bish-Bosh, ';
+    } else if (number % bish === 0) {
+      p.innerHTML += 'Bish, ';
+    } else if (number % bosh === 0) {
+      p.innerHTML += 'Bosh, ';
+    } else {
+      p.innerHTML += `${number}, `;
+    }
+  }
+
+  resetBtn.style.display = 'inline-block';
+}
+
+function reset() {
+  output.innerHTML = '';
+
+  document.querySelector('#bish').value = 0;
+  document.querySelector('#bosh').value = 0;
+  document.querySelector('#max').value = 0;
+
+  resetBtn.style.display = 'none';
+}
+
+function submit(e) {
   e.preventDefault();
 
-  const bish = document.querySelector('#bish').value;
-  const bosh = document.querySelector('#bosh').value;
-  const max = document.querySelector('#max').value;
+  const bish = Number(document.querySelector('#bish').value);
+  const bosh = Number(document.querySelector('#bosh').value);
+  const max = Number(document.querySelector('#max').value);
 
-  console.log(bish);
-  console.log(bosh);
-  console.log(max);
-});
+  calculate(bish, bosh, max);
+}
+
+resetBtn.addEventListener('click', reset);
+form.addEventListener('submit', (e) => submit(e));
