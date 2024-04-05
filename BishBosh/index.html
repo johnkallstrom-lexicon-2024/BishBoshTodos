@@ -9,37 +9,56 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <title>Bish-Bosh</title>
+    <title>Bish-Bosh 2.0</title>
   </head>
   <body class="bg-light">
     <div class="container py-2">
-      <h3>Bish-Bosh</h3>
+      <h3>Bish-Bosh 2.0</h3>
+      <p>
+        The bish-bosh will list all numbers between, for example 1 to 100, with
+        some exceptions. If the number is equally divided with the bish-number
+        then that number will be replaced with 'Bish'. If the number is equally
+        divided with the bosh-number then that number will be replaced with
+        'Bosh'. If the number is equally divided with both, then that number
+        will be replaced with 'Bish-Bosh'.
+      </p>
       <div class="row">
         <div class="col-sm-6 col-lg-4">
           <div class="card">
             <div class="card-body">
-              <div class="mb-3">
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Enter bish..."
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Enter bosh..."
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Enter max..."
-                />
-              </div>
-              <button type="button" class="btn btn-warning">Submit</button>
+              <form id="form">
+                <div class="mb-3">
+                  <label class="form-label">Bish</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    value="0"
+                    min="1"
+                    id="bish"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Bosh</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    value="0"
+                    min="1"
+                    id="bosh"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Max</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    value="0"
+                    min="1"
+                    id="max"
+                  />
+                </div>
+                <input type="submit" class="btn btn-warning" id="submit" />
+              </form>
             </div>
           </div>
         </div>
@@ -52,11 +71,14 @@
         </div>
       </div>
     </div>
+    <footer class="text-center fixed-bottom" style="height: 50px">
+      <span>av John Källström &copy; 2024</span>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="bishbosh.js"></script>
   </body>
 </html>
