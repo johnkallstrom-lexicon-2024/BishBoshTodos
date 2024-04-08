@@ -8,6 +8,9 @@ createTodo = (value) => {
   const li = document.createElement('li');
   const input = document.createElement('input');
   const label = document.createElement('label');
+  const span = document.createElement('span');
+  span.innerText = new Date().toLocaleString();
+  span.classList.add('float-end');
 
   li.classList.add('list-group-item');
   label.innerText = value;
@@ -28,6 +31,7 @@ createTodo = (value) => {
 
   li.appendChild(input);
   li.appendChild(label);
+  li.appendChild(span);
 
   return li;
 };
