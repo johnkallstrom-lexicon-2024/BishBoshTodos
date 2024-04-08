@@ -9,7 +9,7 @@ createTodo = (value) => {
   const input = document.createElement('input');
   const label = document.createElement('label');
   const span = document.createElement('span');
-  span.innerText = new Date().toLocaleString();
+  span.innerText = new Date().toLocaleTimeString();
   span.classList.add('float-end');
 
   li.classList.add('list-group-item');
