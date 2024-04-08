@@ -1,6 +1,7 @@
 const input = document.querySelector('#input');
 const addButton = document.querySelector('#addButton');
 const deleteButton = document.querySelector('#deleteButton');
+const allCheckbox = document.querySelector('#allCheck');
 const output = document.querySelector('#output');
 
 createTodo = (value) => {
@@ -44,8 +45,26 @@ deleteMarkedTodos = () => {
   );
   if (todosToDelete.length > 0) {
     todosToDelete.forEach((t) => t.remove());
+    allCheckbox.checked = false;
+  }
+};
+
+markAll = (e) => {
+  const listItems = document.querySelectorAll('#output li');
+  const checkboxes = document.querySelectorAll('#output .form-check-input');
+  const labels = document.querySelectorAll('#output .form-check-label');
+
+  if (e.target.checked) {
+    listItems.forEach((li) => li.classList.add('list-group-item-success'));
+    checkboxes.forEach((c) => (c.checked = true));
+    labels.forEach((l) => l.classList.add('text-decoration-line-through'));
+  } else {
+    listItems.forEach((li) => li.classList.remove('list-group-item-success'));
+    checkboxes.forEach((c) => (c.checked = false));
+    labels.forEach((l) => l.classList.remove('text-decoration-line-through'));
   }
 };
 
 addButton.addEventListener('click', addTodo);
 deleteButton.addEventListener('click', deleteMarkedTodos);
+allCheckbox.addEventListener('change', markAll);
